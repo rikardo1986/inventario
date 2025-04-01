@@ -20,7 +20,6 @@ try {
         $fechaBaja = $_POST['fechaBaja'];
         $descripcion = $_POST['descripcion'];
 
-
         $sql = "INSERT INTO productos (tipo, marca, modelo,  sn, estado, asignado, usuario, edificio,  unidad_fl, piso, fecha_asignacion, fecha_baja, descripcion) 
                 VALUES (:tipo,  :marca, :modelo, :sn, :estado, :asignado, :usuario, :edificio,  :unidadFL, :piso,  :fechaAsignacion, :fechaBaja :descripcion,)";
         $stmt = $pdo->prepare($sql);
@@ -47,3 +46,4 @@ try {
     echo "Error: " . $e->getMessage();
 }
 ?>
+
