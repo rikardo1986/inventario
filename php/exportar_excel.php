@@ -2,7 +2,7 @@
 require_once 'conexion.php';
 
 header("Content-Type: application/vnd.ms-excel");
-header("Content-Disposition: attachment; filename=productos.xls");
+header("Content-Disposition: attachment; filename=equipos.xls");
 
 try {
     $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);

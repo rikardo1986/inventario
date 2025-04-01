@@ -1,47 +1,49 @@
 <?php
-// Incluir el archivo de conexión
 require_once 'conexion_prov.php';
 
 try {
     $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Verificar si los datos fueron enviados
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $tipo = $_POST['tipo'];
         $marca = $_POST['marca'];
         $modelo = $_POST['modelo'];
         $sn = $_POST['sn'];
-        $descripcion = $_POST['descripcion'];
+        $mac = $_POST['mac'];
+        $hostname = $_POST['hostname'];
         $estado = $_POST['estado'];
+        $asignado = $_POST['asignado'];
+        $funcionario = $_POST['funcionario'];
         $usuario = $_POST['usuario'];
         $edificio = $_POST['edificio'];
-        $piso = $_POST['piso'];
-        $asignado = $_POST['asignado'];
         $unidadFL = $_POST['unidadFL'];
+        $piso = $_POST['piso'];
         $fechaAsignacion = $_POST['fechaAsignacion'];
         $fechaBaja = $_POST['fechaBaja'];
+        $descripcion = $_POST['descripcion'];
 
-        // Insertar en la base de datos
-        $sql = "INSERT INTO productos (tipo, codigo_uaf, sn, marca, modelo, descripcion, estado, usuario, edificio, piso, asignado, unidad_fl, fecha_asignacion, fecha_baja) 
-                VALUES (:tipo, :codigoUAF, :sn, :marca, :modelo, :descripcion, :estado, :usuario, :edificio, :piso, :asignado, :unidadFL, :fechaAsignacion, :fechaBaja)";
+
+        $sql = "INSERT INTO productos (tipo, marca, modelo, sn, mac, hostname, estado, asignado, funcionario, usuario, edificio,  unidad_fl, piso, fecha_asignacion, fecha_baja, descripcion) 
+                VALUES (:tipo,  :marca, :modelo, :sn, :mac, :hostname, :estado, :asignado, :funcionario, :usuario, :edificio, :unidadFL, :piso, :fechaAsignacion, :fechaBaja :descripcion,)";
         $stmt = $pdo->prepare($sql);
 
         $stmt->execute([
             ':tipo' => $tipo,
-            ':codigoUAF' => $codigoUAF,
-            ':sn' => $sn,
             ':marca' => $marca,
             ':modelo' => $modelo,
-            ':descripcion' => $descripcion,
+            ':mac' => $mac,
+            ':hostname' => $hostname,
             ':estado' => $estado,
+            ':asignado' => $asignado,
+            ':funcionario' => $funcionario,
             ':usuario' => $usuario,
             ':edificio' => $edificio,
-            ':piso' => $piso,
-            ':asignado' => $asignado,
             ':unidadFL' => $unidadFL,
+            ':piso' => $piso,
             ':fechaAsignacion' => $fechaAsignacion,
             ':fechaBaja' => $fechaBaja,
+            ':descripcion' => $descripcion,
         ]);
 
         echo "Producto guardado exitosamente.";
