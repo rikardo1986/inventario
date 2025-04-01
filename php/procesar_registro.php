@@ -1,5 +1,4 @@
 <?php
-// Incluir el archivo de conexión
 require_once 'conexion.php';
 
 try {
@@ -9,7 +8,6 @@ try {
     die("Error de conexión: " . $e->getMessage());
 }
 
-// Procesar el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $_POST['usuario'];
     $contrasena = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
