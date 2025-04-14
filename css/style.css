@@ -34,6 +34,7 @@ header {
 }
 
 /* TITULO */
+
 .principal {
   display: grid;
   width: 100%;
@@ -72,6 +73,8 @@ header {
   color: white;
   padding-top: 8%;
 }
+
+
 /***** INVENTARIO ******/
 .ingreso {
   width: 100%;
@@ -80,7 +83,7 @@ header {
   gap: 10%;
   margin: 15rem 0 10rem;
   grid-template-columns: repeat(2, 30rem);
-  grid-template-rows: repeat(3, 9rem);
+  grid-template-rows: repeat(2, 9rem);
   position: relative;
   justify-content: center;
 }
@@ -114,7 +117,7 @@ header {
   grid-column: 2/3;
   grid-row: 1/2;
 }
-
+/*
 .ingreso button:nth-child(3) {
   background-image: url("../assets/img/buscar.png");
   grid-column: 1/2;
@@ -126,17 +129,17 @@ header {
   grid-column: 2/3;
   grid-row: 2/3;
 }
-
-.ingreso button:nth-child(5) {
+*/
+.ingreso button:nth-child(3) {
   background-image: url("../assets/img/exportar.PNG");
   grid-column: 1/2;
-  grid-row: 3/4;
+  grid-row: 2/3;
 }
 
 .ingreso button:last-child {
   background-image: url("../assets/img/salir.PNG");
   grid-column: 2/3;
-  grid-row: 3/4;
+  grid-row: 2/3;
 }
 
 .ingreso button:active {
@@ -153,7 +156,6 @@ footer p {
   font-family: fuente2;
   font-size: 1rem;
   text-align: center;
-  padding: 2%;
 }
 
 /* INGRESO EQUIPOS */
@@ -312,7 +314,8 @@ button:hover {
 
 @media (max-width: 1440px) {
   .principal {
-    grid-template-rows: repeat(2, 12rem);
+    grid-template-rows: repeat(2, 10rem);
+    grid-template-columns: repeat(4, 15rem);
   }
   .titulo h1,
   .titulo h2 {
@@ -337,9 +340,39 @@ button:hover {
   }
 }
 
+@media (max-width: 1448) {
+  .principal {
+    grid-template-rows: repeat(2, 10rem);
+    grid-template-columns: repeat(4, 12rem);
+  }
+  .titulo h1,
+  .titulo h2 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+}
+
+
+@media (max-width: 906px) {
+  .principal {
+    grid-template-rows: repeat(2, 8rem);
+    grid-template-columns: repeat(4, 10rem);
+  }
+  .titulo h1,
+  .titulo h2 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .principal {
     grid-template-rows: repeat(2, 6rem);
+    grid-template-columns: repeat(4, 8rem);
   }
   .titulo h1,
   .titulo h2 {
@@ -366,7 +399,8 @@ button:hover {
 
 @media (max-width: 320px) {
   .principal {
-    grid-template-rows: repeat(2, 4rem);
+    grid-template-rows: repeat(2, 1rem);
+    grid-template-columns: repeat(4, 2rem);
   }
   .titulo h1,
   .titulo h2 {
@@ -378,7 +412,7 @@ button:hover {
   .ingreso {
     gap: 1rem 1rem;
     margin: 5rem 0 3rem;
-    grid-template-columns: repeat(2, 7rem);
+    grid-template-columns: repeat(2, 8rem);
     grid-template-rows: repeat(3, 5rem);
   }
   .ingreso button {

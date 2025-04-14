@@ -4,13 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agregar Equipo Fiscalía</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <header>
       <h1>Agregar Equipo Fiscalía</h1>
     </header>
-    <form id="formProducto" action="../php/guardar_producto.php" method="POST">
+    <form
+      id="formProducto"
+      action="../php/guardar_producto.php"
+      method="POST"
+    >
       <!-- COLUMNA IZQUIERDA -->
       <div class="form-group">
         <label for="tipo">Tipo:</label>
@@ -60,10 +64,10 @@
       <!-- COLUMNA DERECHA -->
       <div class="form-group">
         <label for="asignado">Asignación:</label>
-        <select id="asignado" name="asignado" required>
+        <select id="asignado" name="asignado" >
           <option value="" disabled selected>Seleccionar</option>
           <option value="Asignado">Asignado</option>
-          <option value="No Asignado">Sin Asignar</option>
+          <option value="no-asignado">Sin Asignar</option>
         </select>
       </div>
       <div class="form-group">
@@ -122,14 +126,15 @@
           type="date"
           id="fechaAsignacion"
           name="fechaAsignacion"
-          required
         />
       </div>
       <div class="form-group">
         <label for="fechaBaja">Fecha de baja:</label>
-        <input type="date" id="fechaBaja" name="fechaBaja" />
+        <input 
+          type="date" 
+          id="fechaBaja" 
+          ame="fechaBaja" />
       </div>
-
       <div class="form-group">
         <label for="descripcion">Descripción:</label>
         <textarea id="descripcion" name="descripcion"></textarea>

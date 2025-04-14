@@ -4,90 +4,34 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modificar Producto</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <title>Modificar Productos</title>
+    <link rel="stylesheet" href="../css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
-  <body
-    class="bg-[rgb(217,217,217)] min-h-screen flex flex-col items-center justify-center"
-  >
-    <header>
-      <h1 class="text-3xl font-bold text-[rgb(24,45,152)] mb-6">
-        Modificar por número de serie o Usuario
-      </h1>
-    </header>
+  <body class="bg-gray-100 min-h-screen p-6">
 
-    <main class="flex flex-col items-center space-y-4">
-      <input
-        type="text"
-        id="busqueda"
-        placeholder="Ingrese Número de Serie o Usuario"
-        class="p-2 border border-gray-400 rounded-lg text-center"
-      />
-
-      <button
-        id="buscarBtn"
-        class="bg-[rgb(24,45,152)] text-white font-bold py-2 px-4 rounded-lg hover:bg-[rgb(248,117,22)] transition-colors"
-      >
-        Buscar Equipo
-      </button>
-
-      <form
-        id="formModificar"
-        class="hidden flex flex-col items-center space-y-3"
-      >
-        <input type="hidden" id="idEquipo" name="idEquipo" />
-
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold mb-4 text-center text-gray-800">Modificar Productos</h1>
+  
+      <div class="flex flex-col sm:flex-row items-center gap-4 mb-6">
         <input
           type="text"
-          id="marca"
-          name="marca"
-          placeholder="Marca"
-          class="p-2 border rounded-lg"
-          required
+          id="buscar"
+          placeholder="Buscar por número de serie o usuario"
+          class="flex-1 p-2 border rounded-lg w-full"
         />
-        <input
-          type="text"
-          id="modelo"
-          name="modelo"
-          placeholder="Modelo"
-          class="p-2 border rounded-lg"
-          required
-        />
-        <input
-          type="text"
-          id="usuario"
-          name="usuario"
-          placeholder="Usuario"
-          class="p-2 border rounded-lg"
-          required
-        />
-        <input
-          type="text"
-          id="estado"
-          name="estado"
-          placeholder="Estado"
-          class="p-2 border rounded-lg"
-          required
-        />
-
         <button
-          type="submit"
-          class="bg-[rgb(248,117,22)] text-white font-bold py-2 px-4 rounded-lg hover:bg-[rgb(24,45,152)] transition-colors"
+          onclick="buscarProducto()"
+          class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
         >
-          Guardar Cambios
+          Buscar
         </button>
-      </form>
-
-      <button
-        id="volver"
-        onclick="window.location.href='../index.html'"
-        class="bg-[rgb(248,117,22)] text-white font-bold py-2 px-4 rounded-lg hover:bg-[rgb(24,45,152)] transition-colors"
-      >
-        Volver
-      </button>
-    </main>
+      </div>
+  
+      <div id="resultados"></div>
+    </div>
     <script src="../js/modificar.js"></script>
   </body>
 </html>
+

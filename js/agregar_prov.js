@@ -1,18 +1,24 @@
-<script>
 document.addEventListener("DOMContentLoaded", function () {
   const tipoSelect = document.getElementById("tipo");
   const otroTipoInput = document.getElementById("otroTipo");
   const telefonoFields = document.getElementById("telefonoFields");
   const asignadoSelect = document.getElementById("asignado");
 
-  // Lista de campos a ocultar cuando es "Sin Asignar"
-  const camposAsignacion = document.querySelectorAll(
-    "#funcionario, #usuario, #edificio, #unidadFL, #piso, #fechaAsignacion"
-  );
+  const funcionarioInput = document.getElementById("funcionario");
+  const usuarioInput = document.getElementById("usuario");
+  const fechaAsignacionInput = document.getElementById("fechaAsignacion");
+  const fechaBajaInput = document.getElementById("fechaBaja");
 
-  // Función para mostrar/ocultar el campo "otro tipo"
-  tipoSelect.addEventListener("change", function () {
-    if (tipoSelect.value === "otro") {
+  const funcionarioGroup = funcionarioInput.closest(".form-group");
+  const usuarioGroup = usuarioInput.closest(".form-group");
+  const fechaAsignacionGroup = fechaAsignacionInput.closest(".form-group");
+  const fechaBajaGroup = fechaBajaInput.closest(".form-group");
+
+  // Función para actualizar visibilidad de campos según el tipo
+  function actualizarTipo() {
+    const tipo = tipoSelect.value;
+
+    if (tipo === "otro") {
       otroTipoInput.style.display = "block";
       otroTipoInput.setAttribute("required", "true");
     } else {
@@ -21,11 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
       otroTipoInput.value = "";
     }
 
-    if (tipoSelect.value === "telefono") {
+    if (tipo === "telefono") {
       telefonoFields.style.display = "block";
-      document
-        .getElementById("telefono")
-        .setAttribute("required", "true");
+      document.getElementById("telefono").setAttribute("required", "true");
       document.getElementById("anexo").setAttribute("required", "true");
     } else {
       telefonoFields.style.display = "none";
@@ -34,21 +38,43 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("telefono").value = "";
       document.getElementById("anexo").value = "";
     }
-  });
+  }
 
-  // Función para ocultar/mostrar campos según la asignación
-  asignadoSelect.addEventListener("change", function () {
-    if (asignadoSelect.value === "No Asignado") {
-      camposAsignacion.forEach((campo) => {
-        campo.closest(".form-group").style.display = "none";
-        campo.removeAttribute("required");
-      });
+  // Función para actualizar visibilidad de campos según asignación
+  function actualizarAsignado() {
+    const asignado = asignadoSelect.value;
+
+    if (asignado === "no-asignado") {
+      funcionarioGroup.style.display = "none";
+      funcionarioInput.removeAttribute("required");
+
+      usuarioGroup.style.display = "none";
+      usuarioInput.removeAttribute("required");
+
+      fechaAsignacionGroup.style.display = "none";
+      fechaAsignacionInput.removeAttribute("required");
+
+      fechaBajaGroup.style.display = "none";
+      fechaBajaInput.removeAttribute("required");
     } else {
-      camposAsignacion.forEach((campo) => {
-        campo.closest(".form-group").style.display = "block";
-        campo.setAttribute("required", "true");
-      });
+      funcionarioGroup.style.display = "block";
+      funcionarioInput.setAttribute("required", "true");
+
+      usuarioGroup.style.display = "block";
+      usuarioInput.setAttribute("required", "true");
+
+      fechaAsignacionGroup.style.display = "block";
+      fechaAsignacionInput.setAttribute("required", "true");
+
+      fechaBajaGroup.style.display = "block";
     }
-  });
+  }
+
+  // Listeners
+  tipoSelect.addEventListener("change", actualizarTipo);
+  asignadoSelect.addEventListener("change", actualizarAsignado);
+
+  // Ejecutar en carga inicial por si hay valores ya seleccionados
+  actualizarTipo();
+  actualizarAsignado();
 });
-</script>
